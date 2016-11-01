@@ -1,0 +1,15 @@
+dist/
+bower_components/
+node_modules/
+.git
+.idea
+/.tmp/
+finance/API/html/
+npm-debug.log
+swagger/
+/.uini
+*.conf
+htmlToJs/
+
+index.html
+userInfo.txt

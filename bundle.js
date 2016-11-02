@@ -58,9 +58,34 @@
 
 	var _hello2 = _interopRequireDefault(_hello);
 
+	var _table = __webpack_require__(173);
+
+	var _table2 = _interopRequireDefault(_table);
+
+	var _autoAddTable = __webpack_require__(174);
+
+	var _autoAddTable2 = _interopRequireDefault(_autoAddTable);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	_reactDom2.default.render(_react2.default.createElement(_hello2.default, { name: 'lq' }), document.getElementById('content'));
+	var PRODUCTS = [{ category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' }, { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' }, { category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball' }, { category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch' }, { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5' }, { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }];
+
+	var items = [{ name: 1, now: 12, count: 24, edit: "0,1,1" }, { name: 2, now: 5, count: 25, edit: "0,1,1" }, { name: 3, now: 6, count: 26, edit: "0,1,1" }, { name: 4, now: 8, count: 28, edit: "0,1,1" }];
+
+	_reactDom2.default.render(_react2.default.createElement(_autoAddTable2.default, { items: items }), document.getElementById('content'));
+
+	/*
+
+	ReactDOM.render(
+	    <FilterableProductTable products={PRODUCTS} />,
+	    document.getElementById('content')
+	);*/
+
+	/*
+	ReactDOM.render(
+	    <Greeting name="lq"/>,
+	    document.getElementById('content')
+	)*/
 
 /***/ },
 /* 1 */
@@ -21481,6 +21506,413 @@
 	}(_react2.default.Component);
 
 	exports.default = Greeting;
+
+/***/ },
+/* 173 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lqg on 2016-11-2.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var ProductCategoryRow = function (_React$Component) {
+	    _inherits(ProductCategoryRow, _React$Component);
+
+	    function ProductCategoryRow() {
+	        _classCallCheck(this, ProductCategoryRow);
+
+	        return _possibleConstructorReturn(this, (ProductCategoryRow.__proto__ || Object.getPrototypeOf(ProductCategoryRow)).apply(this, arguments));
+	    }
+
+	    _createClass(ProductCategoryRow, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'tr',
+	                null,
+	                _react2.default.createElement(
+	                    'th',
+	                    { colSpan: '2' },
+	                    this.props.category
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ProductCategoryRow;
+	}(_react2.default.Component);
+
+	var ProductRow = function (_React$Component2) {
+	    _inherits(ProductRow, _React$Component2);
+
+	    function ProductRow() {
+	        _classCallCheck(this, ProductRow);
+
+	        return _possibleConstructorReturn(this, (ProductRow.__proto__ || Object.getPrototypeOf(ProductRow)).apply(this, arguments));
+	    }
+
+	    _createClass(ProductRow, [{
+	        key: 'render',
+	        value: function render() {
+	            var name = this.props.product.stocked ? this.props.product.name : _react2.default.createElement(
+	                'span',
+	                { style: { color: 'red' } },
+	                this.props.product.name
+	            );
+	            return _react2.default.createElement(
+	                'tr',
+	                null,
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    name
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    this.props.product.price
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ProductRow;
+	}(_react2.default.Component);
+
+	var ProductTable = function (_React$Component3) {
+	    _inherits(ProductTable, _React$Component3);
+
+	    function ProductTable() {
+	        _classCallCheck(this, ProductTable);
+
+	        return _possibleConstructorReturn(this, (ProductTable.__proto__ || Object.getPrototypeOf(ProductTable)).apply(this, arguments));
+	    }
+
+	    _createClass(ProductTable, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this4 = this;
+
+	            var rows = [];
+	            var lastCategory = null;
+	            this.props.products.forEach(function (product) {
+	                if (product.name.indexOf(_this4.props.filterText) === -1 || !product.stocked && _this4.props.inStockOnly) {
+	                    return;
+	                }
+	                if (product.category !== lastCategory) {
+	                    rows.push(_react2.default.createElement(ProductCategoryRow, { category: product.category, key: product.category }));
+	                }
+	                rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.name }));
+	                lastCategory = product.category;
+	            });
+	            return _react2.default.createElement(
+	                'table',
+	                null,
+	                _react2.default.createElement(
+	                    'thead',
+	                    null,
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            'Name'
+	                        ),
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            'Price'
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    rows
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ProductTable;
+	}(_react2.default.Component);
+
+	var SearchBar = function (_React$Component4) {
+	    _inherits(SearchBar, _React$Component4);
+
+	    function SearchBar(props) {
+	        _classCallCheck(this, SearchBar);
+
+	        var _this5 = _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).call(this, props));
+
+	        _this5.handleChange = _this5.handleChange.bind(_this5);
+	        return _this5;
+	    }
+
+	    _createClass(SearchBar, [{
+	        key: 'handleChange',
+	        value: function handleChange() {
+	            this.props.onUserInput(this.refs.filterTextInput.value, this.refs.inStockOnlyInput.checked);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'form',
+	                null,
+	                _react2.default.createElement('input', {
+	                    type: 'text',
+	                    placeholder: 'Search...',
+	                    value: this.props.filterText,
+	                    ref: 'filterTextInput',
+	                    onChange: this.handleChange
+	                }),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    _react2.default.createElement('input', {
+	                        type: 'checkbox',
+	                        checked: this.props.inStockOnly,
+	                        ref: 'inStockOnlyInput',
+	                        onChange: this.handleChange
+	                    }),
+	                    ' ',
+	                    'Only show products in stock'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return SearchBar;
+	}(_react2.default.Component);
+
+	var FilterableProductTable = function (_React$Component5) {
+	    _inherits(FilterableProductTable, _React$Component5);
+
+	    function FilterableProductTable(props) {
+	        _classCallCheck(this, FilterableProductTable);
+
+	        var _this6 = _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).call(this, props));
+
+	        _this6.state = {
+	            filterText: '',
+	            inStockOnly: false
+	        };
+
+	        _this6.handleUserInput = _this6.handleUserInput.bind(_this6);
+	        return _this6;
+	    }
+
+	    _createClass(FilterableProductTable, [{
+	        key: 'handleUserInput',
+	        value: function handleUserInput(filterText, inStockOnly) {
+	            this.setState({
+	                filterText: filterText,
+	                inStockOnly: inStockOnly
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(SearchBar, {
+	                    filterText: this.state.filterText,
+	                    inStockOnly: this.state.inStockOnly,
+	                    onUserInput: this.handleUserInput
+	                }),
+	                _react2.default.createElement(ProductTable, {
+	                    products: this.props.products,
+	                    filterText: this.state.filterText,
+	                    inStockOnly: this.state.inStockOnly
+	                })
+	            );
+	        }
+	    }]);
+
+	    return FilterableProductTable;
+	}(_react2.default.Component);
+
+	exports.default = FilterableProductTable;
+
+/***/ },
+/* 174 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lqg on 2016-11-2.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var Input = function (_React$Component) {
+	    _inherits(Input, _React$Component);
+
+	    function Input(props) {
+	        _classCallCheck(this, Input);
+
+	        var _this = _possibleConstructorReturn(this, (Input.__proto__ || Object.getPrototypeOf(Input)).call(this, props));
+
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(Input, [{
+	        key: "handleChange",
+	        value: function handleChange() {}
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement("input", { value: this.props.value, ref: "inputValue", onChange: this.handleChange });
+	        }
+	    }]);
+
+	    return Input;
+	}(_react2.default.Component);
+
+	var Row = function (_React$Component2) {
+	    _inherits(Row, _React$Component2);
+
+	    function Row() {
+	        _classCallCheck(this, Row);
+
+	        return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
+	    }
+
+	    _createClass(Row, [{
+	        key: "judgeInput",
+	        value: function judgeInput(order) {
+	            if (parseInt(this.props.item.edit.split(",")[order])) {
+	                return true;
+	            }
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            var order = 0;
+
+	            return _react2.default.createElement(
+	                "tr",
+	                null,
+	                _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    this.judgeInput(order++) ? _react2.default.createElement(Input, { value: this.props.item.name }) : this.props.item.name
+	                ),
+	                _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    this.judgeInput(order++) ? _react2.default.createElement(Input, { value: this.props.item.now }) : this.props.item.now
+	                ),
+	                _react2.default.createElement(
+	                    "td",
+	                    null,
+	                    this.judgeInput(order++) ? _react2.default.createElement(Input, { value: this.props.item.count }) : this.props.item.count
+	                )
+	            );
+	        }
+	    }]);
+
+	    return Row;
+	}(_react2.default.Component);
+
+	var CountTable = function (_React$Component3) {
+	    _inherits(CountTable, _React$Component3);
+
+	    function CountTable(props) {
+	        _classCallCheck(this, CountTable);
+
+	        return _possibleConstructorReturn(this, (CountTable.__proto__ || Object.getPrototypeOf(CountTable)).call(this, props));
+	        //this.state = this.props.items;
+	    }
+
+	    _createClass(CountTable, [{
+	        key: "render",
+	        value: function render() {
+	            var items = this.props.items,
+	                rows = [];
+
+	            items.forEach(function (item) {
+	                rows.push(_react2.default.createElement(Row, { item: item }));
+	            });
+
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                    "table",
+	                    { className: "table" },
+	                    _react2.default.createElement(
+	                        "thead",
+	                        null,
+	                        _react2.default.createElement(
+	                            "th",
+	                            null,
+	                            "item"
+	                        ),
+	                        _react2.default.createElement(
+	                            "th",
+	                            null,
+	                            "\u672C\u671F"
+	                        ),
+	                        _react2.default.createElement(
+	                            "th",
+	                            null,
+	                            "\u7D2F\u8BA1"
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        "tbody",
+	                        null,
+	                        rows
+	                    )
+	                )
+	            );
+	        }
+	    }]);
+
+	    return CountTable;
+	}(_react2.default.Component);
+
+	exports.default = CountTable;
 
 /***/ }
 /******/ ]);

@@ -11,5 +11,4 @@ swagger/
 *.conf
 htmlToJs/
 
-index.html
 userInfo.txt

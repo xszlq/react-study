@@ -17,7 +17,7 @@ var items = [
     {name: 1, now: 12, count: 24, edit: "0,1,1"},
     {name: 2, now: 5, count: 25, edit: "0,1,1"},
     {name: 3, now: 6, count: 26, edit: "0,1,1"},
-    {name: 4, now: 8, count: 28, edit: "0,1,1"},
+    {name: 4, now: 17, count: 49, edit: "0,1,1"},
 ];
 
 

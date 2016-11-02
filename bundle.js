@@ -70,7 +70,7 @@
 
 	var PRODUCTS = [{ category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' }, { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' }, { category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball' }, { category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch' }, { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5' }, { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }];
 
-	var items = [{ name: 1, now: 12, count: 24, edit: "0,1,1" }, { name: 2, now: 5, count: 25, edit: "0,1,1" }, { name: 3, now: 6, count: 26, edit: "0,1,1" }, { name: 4, now: 8, count: 28, edit: "0,1,1" }];
+	var items = [{ name: 1, now: 12, count: 24, edit: "0,1,1" }, { name: 2, now: 5, count: 25, edit: "0,1,1" }, { name: 3, now: 6, count: 26, edit: "0,1,1" }, { name: 4, now: 17, count: 49, edit: "0,1,1" }];
 
 	_reactDom2.default.render(_react2.default.createElement(_autoAddTable2.default, { items: items }), document.getElementById('content'));
 
@@ -21797,7 +21797,9 @@
 
 	    _createClass(Input, [{
 	        key: "handleChange",
-	        value: function handleChange() {}
+	        value: function handleChange() {
+	            this.props.onUserInput(this.refs.inputValue.value);
+	        }
 	    }, {
 	        key: "render",
 	        value: function render() {
@@ -21840,7 +21842,7 @@
 	                _react2.default.createElement(
 	                    "td",
 	                    null,
-	                    this.judgeInput(order++) ? _react2.default.createElement(Input, { value: this.props.item.now }) : this.props.item.now
+	                    this.judgeInput(order++) ? _react2.default.createElement(Input, { value: this.props.item.now, onUserInput: this.props.onUserInput }) : this.props.item.now
 	                ),
 	                _react2.default.createElement(
 	                    "td",
@@ -21860,18 +21862,30 @@
 	    function CountTable(props) {
 	        _classCallCheck(this, CountTable);
 
-	        return _possibleConstructorReturn(this, (CountTable.__proto__ || Object.getPrototypeOf(CountTable)).call(this, props));
-	        //this.state = this.props.items;
+	        var _this3 = _possibleConstructorReturn(this, (CountTable.__proto__ || Object.getPrototypeOf(CountTable)).call(this, props));
+
+	        _this3.state = {
+	            items: _this3.props.items
+	        };
+	        _this3.handleUserInput = _this3.handleUserInput.bind(_this3);
+	        return _this3;
 	    }
 
 	    _createClass(CountTable, [{
+	        key: "handleUserInput",
+	        value: function handleUserInput(targetValue) {
+	            console.log(targetValue);
+	        }
+	    }, {
 	        key: "render",
 	        value: function render() {
+	            var _this4 = this;
+
 	            var items = this.props.items,
 	                rows = [];
 
 	            items.forEach(function (item) {
-	                rows.push(_react2.default.createElement(Row, { item: item }));
+	                rows.push(_react2.default.createElement(Row, { item: item, onUserInput: _this4.handleUserInput }));
 	            });
 
 	            return _react2.default.createElement(
@@ -21904,6 +21918,11 @@
 	                        null,
 	                        rows
 	                    )
+	                ),
+	                _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    "\u8BF4\u660E\uFF1A4=1+2\uFF0C\u7D2F\u8BA1\u503C\u81EA\u52A8\u8BA1\u7B97"
 	                )
 	            );
 	        }

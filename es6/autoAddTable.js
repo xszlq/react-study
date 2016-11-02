@@ -10,7 +10,7 @@ class Input extends React.Component{
     }
 
     handleChange() {
-
+        this.props.onUserInput(this.refs.inputValue.value)
     }
 
     render(){
@@ -33,12 +33,10 @@ class Row extends React.Component {
         var
             order = 0;
 
-
-
         return (
             <tr>
                 <td>{this.judgeInput(order++)? <Input value={this.props.item.name}/> : this.props.item.name}</td>
-                <td>{this.judgeInput(order++)? <Input value={this.props.item.now}/> : this.props.item.now}</td>
+                <td>{this.judgeInput(order++)? <Input value={this.props.item.now} onUserInput={this.props.onUserInput}/> : this.props.item.now}</td>
                 <td>{this.judgeInput(order++)? <Input value={this.props.item.count}/> : this.props.item.count}</td>
             </tr>
         )
@@ -48,7 +46,14 @@ class Row extends React.Component {
 export default class CountTable extends React.Component{
     constructor(props){
         super(props);
-        //this.state = this.props.items;
+        this.state = {
+            items: this.props.items
+        };
+        this.handleUserInput = this.handleUserInput.bind(this)
+    }
+
+    handleUserInput(targetValue){
+        console.log(targetValue)
     }
 
     render(){
@@ -56,7 +61,7 @@ export default class CountTable extends React.Component{
             rows = [];
 
         items.forEach((item)=>{
-            rows.push(<Row item={item}/>)
+            rows.push(<Row item={item} onUserInput={this.handleUserInput}/>)
         });
 
         return (
@@ -71,6 +76,7 @@ export default class CountTable extends React.Component{
                     {rows}
                     </tbody>
                 </table>
+                <p>说明：4=1+2，累计值自动计算</p>
             </div>
         )
     }

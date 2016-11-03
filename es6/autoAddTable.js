@@ -3,6 +3,7 @@
  */
 import React from 'react'
 import _ from 'underscore'
+import $ from 'jquery'
 
 class Td extends React.Component{
     constructor(props) {
@@ -11,8 +12,7 @@ class Td extends React.Component{
     }
 
     handleChange() {
-        console.log(this.props.order);
-        this.props.onUserInput(this.refs.inputValue, this.props.order)
+        this.props.onUserInput(this.refs.inputValue.value, this.props.order)
     }
 
     render(){
@@ -26,13 +26,6 @@ class Td extends React.Component{
 
 class Row extends React.Component {
 
-
-    judgeInput(order){
-        if(parseInt(this.props.item.edit.split(",")[order])){
-            return true;
-        }
-    }
-
     render() {
         var
             propsItem = this.props.item,
@@ -44,7 +37,7 @@ class Row extends React.Component {
 
         _.each(item, function(value, key){
             if(parseInt(editables[order++])){
-                var inputOrder = [propsItem.line, order];
+                var inputOrder = [propsItem.line, 1];
                 tds.push(<Td onUserInput={self.props.onUserInput} value={value} order={inputOrder}/>);
             }else{
                 tds.push(<td>{value}</td>);
@@ -70,7 +63,71 @@ export default class CountTable extends React.Component{
     }
 
     handleUserInput(targetValue, order){
-        console.log(targetValue, order);
+        // 处理不是数字的情况
+        if(!$.isNumeric(targetValue)){
+            targetValue = 0;
+        }
+        this.orderDeal(targetValue, order)
+    }
+    // 根据input行次进行处理
+    orderDeal(targetValue,order){
+        var row = order[0];
+        // 处理行间变化
+        this.dealRowChange(row, targetValue);
+
+        switch (row){
+            case 1:
+                this.dealOneOrTwoChange(targetValue, 1);
+                break;
+            case 2:
+                this.dealOneOrTwoChange(targetValue, 2);
+                break;
+            default:
+                this.dealCountCal();
+                this.changeState();
+                break;
+        }
+    }
+    dealRowChange(row, targetValue){
+        // 设置累计值
+        var items = this.props.items,
+            rowOrder = row-1;
+
+        items[rowOrder].count = parseFloat(targetValue) + items[0].baseValue;
+        items[rowOrder].now = parseFloat(targetValue);
+    }
+    // 并自动计算合计值
+    dealCountCal(){
+        var items = this.props.items,
+            lastItem = _.last(items);
+        // 并自动计算合计值
+        var sum = _.reduce(_.pluck(_.initial(items), "now"), function (memo,num) {
+            return memo+num;
+        }, 0);
+
+        lastItem.now = sum;
+        lastItem.count = sum + lastItem.baseValue;
+    }
+
+    // 第一行改变或第二行改变
+    dealOneOrTwoChange(targetValue, row){
+        let items = this.props.items;
+        // 自动计算 4 = 1+2
+        if(row === 1){
+            items[3].now = items[1].now + parseFloat(targetValue);
+            items[3].count = items[3].now + items[3].baseValue;
+        }else{
+            items[3].now = items[0].now + parseFloat(targetValue);
+            items[3].count = items[3].now + items[3].baseValue;
+        }
+        this.dealCountCal();
+        this.changeState();
+    }
+
+    changeState(){
+        this.setState({
+            items: this.props.items
+        });
     }
 
     render(){

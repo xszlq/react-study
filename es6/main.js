@@ -14,11 +14,11 @@ var PRODUCTS = [
 ];
 
 var items = [
-    {name: 1, now: 1, count: 5, edit: "0,1,1", baseValue:"4",line:1},
-    {name: 2, now: 2, count: 6, edit: "0,1,1", baseValue:"4",line:2},
-    {name: 3, now: 3, count: 7, edit: "0,1,1", baseValue:"4",line:3},
-    {name: 4, now: 4, count: 8, edit: "0,1,1", baseValue:"4",line:4},
-    {name: "合计", now: 10, count: 26, edit: "0,1,1", baseValue:"16",line:5},
+    {name: 1, now: 1, count: 5, edit: "0,1,1", baseValue:4,line:1},
+    {name: 2, now: 2, count: 6, edit: "0,1,1", baseValue:4,line:2},
+    {name: 3, now: 3, count: 7, edit: "0,1,1", baseValue:4,line:3},
+    {name: 4, now: 3, count: 11, edit: "0,1,1", baseValue:8,line:4},
+    {name: "合计", now: 9, count: 29, edit: "0,1,1", baseValue:20,line:5},
 ];
 ReactDOM.render(
     <ItemTable items={items} />,

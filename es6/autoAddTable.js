@@ -2,20 +2,24 @@
  * Created by lqg on 2016-11-2.
  */
 import React from 'react'
+import _ from 'underscore'
 
-class Input extends React.Component{
+class Td extends React.Component{
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange() {
-        this.props.onUserInput(this.refs.inputValue.value)
+        console.log(this.props.order);
+        this.props.onUserInput(this.refs.inputValue, this.props.order)
     }
 
     render(){
         return (
-            <input value={this.props.value} ref="inputValue" onChange={this.handleChange}/>
+            <td>
+                <input value={this.props.value} ref="inputValue" onChange={this.handleChange}/>
+            </td>
         )
     }
 }
@@ -31,13 +35,25 @@ class Row extends React.Component {
 
     render() {
         var
+            propsItem = this.props.item,
+            item = _.pick(propsItem, "name", "now", "count"),
+            tds = [],
+            editables = propsItem.edit.split(","),
+            self = this,
             order = 0;
+
+        _.each(item, function(value, key){
+            if(parseInt(editables[order++])){
+                var inputOrder = [propsItem.line, order];
+                tds.push(<Td onUserInput={self.props.onUserInput} value={value} order={inputOrder}/>);
+            }else{
+                tds.push(<td>{value}</td>);
+            }
+        });
 
         return (
             <tr>
-                <td>{this.judgeInput(order++)? <Input value={this.props.item.name}/> : this.props.item.name}</td>
-                <td>{this.judgeInput(order++)? <Input value={this.props.item.now} onUserInput={this.props.onUserInput}/> : this.props.item.now}</td>
-                <td>{this.judgeInput(order++)? <Input value={this.props.item.count}/> : this.props.item.count}</td>
+                {tds}
             </tr>
         )
     }
@@ -49,15 +65,16 @@ export default class CountTable extends React.Component{
         this.state = {
             items: this.props.items
         };
+        this.items = this.props.items;
         this.handleUserInput = this.handleUserInput.bind(this)
     }
 
-    handleUserInput(targetValue){
-        console.log(targetValue)
+    handleUserInput(targetValue, order){
+        console.log(targetValue, order);
     }
 
     render(){
-        var items = this.props.items,
+        var items = this.items,
             rows = [];
 
         items.forEach((item)=>{
@@ -68,9 +85,11 @@ export default class CountTable extends React.Component{
             <div>
                 <table className="table">
                     <thead>
-                    <th>item</th>
-                    <th>本期</th>
-                    <th>累计</th>
+                    <tr>
+                        <th>item</th>
+                        <th>本期</th>
+                        <th>累计</th>
+                    </tr>
                     </thead>
                     <tbody>
                     {rows}

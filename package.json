@@ -16,6 +16,7 @@
     "react-dom": "^15.3.2",
     "react-loader": "^2.4.0",
     "webpack": "^1.13.2",
-    "underscore": "1.7.0"
+    "underscore": "1.7.0",
+    "jquery": "1.12.0"
   }
 }

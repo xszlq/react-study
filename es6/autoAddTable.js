@@ -18,7 +18,7 @@ class Td extends React.Component{
     render(){
         return (
             <td>
-                <input value={this.props.value} ref="inputValue" onChange={this.handleChange}/>
+                <input defaultValue={this.props.value} ref="inputValue" onBlur={this.handleChange}/>
             </td>
         )
     }
@@ -65,9 +65,10 @@ export default class CountTable extends React.Component{
     handleUserInput(targetValue, order){
         // 处理不是数字的情况
         if(!$.isNumeric(targetValue)){
-            targetValue = 0;
+           // targetValue = 0;
         }
-        this.orderDeal(targetValue, order)
+
+       this.orderDeal(targetValue, order)
     }
     // 根据input行次进行处理
     orderDeal(targetValue,order){
@@ -83,6 +84,7 @@ export default class CountTable extends React.Component{
                 this.dealOneOrTwoChange(targetValue, 2);
                 break;
             default:
+
                 this.dealCountCal();
                 this.changeState();
                 break;
@@ -152,7 +154,7 @@ export default class CountTable extends React.Component{
                     {rows}
                     </tbody>
                 </table>
-                <p>说明：4=1+2，累计值自动计算</p>
+                <p>说明：4=1+2(自动计算)，累计值也自动计算</p>
             </div>
         )
     }

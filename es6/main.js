@@ -3,6 +3,7 @@ import  ReactDOM  from 'react-dom'
 import Greeting from  './hello.js'
 import FilterableProductTable from './table.js'
 import ItemTable from './autoAddTable.js'
+import BlurTest from './events/blur.js'
 
 var PRODUCTS = [
     {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
@@ -20,10 +21,19 @@ var items = [
     {name: 4, now: 3, count: 11, edit: "0,1,1", baseValue:8,line:4},
     {name: "合计", now: 9, count: 29, edit: "0,1,1", baseValue:20,line:5},
 ];
+// 自动计算demo
 ReactDOM.render(
     <ItemTable items={items} />,
     document.getElementById('content')
 );
+/*
+
+// react事件学习
+ReactDOM.render(
+    <BlurTest />,
+    document.getElementById('content')
+);
+*/
 
 /*
 

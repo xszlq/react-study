@@ -33940,12 +33940,12 @@
 	     * @param value
 	     * @returns {string}
 	     */
-	    var toFixedTwoDecimal = function toFixedTwoDecimal(value) {
+	    var fixedTwo = function fixedTwo(value) {
 	        return parseFloat(value).toFixed(2);
 	    };
 
 	    return {
-	        toFixedTwoDecimal: toFixedTwoDecimal
+	        fixedTwo: fixedTwo
 	    };
 	}();
 

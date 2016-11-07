@@ -7,12 +7,12 @@ var numberUtil = (function () {
      * @param value
      * @returns {string}
      */
-    var toFixedTwoDecimal = function(value){
+    var fixedTwo = function(value){
         return parseFloat(value).toFixed(2);
     };
 
     return {
-        toFixedTwoDecimal: toFixedTwoDecimal
+        fixedTwo: fixedTwo
     }
 })();
 

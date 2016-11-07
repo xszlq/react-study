@@ -20,17 +20,16 @@ var items = [
     {name: 4, now: 3, count: 11, edit: "0,1,1", baseValue:8,line:4},
     {name: "合计", now: 9, count: 29, edit: "0,1,1", baseValue:20,line:5},
 ];
-ReactDOM.render(
+/*ReactDOM.render(
     <ItemTable items={items} />,
     document.getElementById('content')
-);
+);*/
 
-/*
 
 ReactDOM.render(
     <FilterableProductTable products={PRODUCTS} />,
     document.getElementById('content')
-);*/
+);
 
 /*
 ReactDOM.render(

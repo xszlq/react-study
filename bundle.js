@@ -71,14 +71,12 @@
 	var PRODUCTS = [{ category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' }, { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' }, { category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball' }, { category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch' }, { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5' }, { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }];
 
 	var items = [{ name: 1, now: 1, count: 5, edit: "0,1,1", baseValue: 4, line: 1 }, { name: 2, now: 2, count: 6, edit: "0,1,1", baseValue: 4, line: 2 }, { name: 3, now: 3, count: 7, edit: "0,1,1", baseValue: 4, line: 3 }, { name: 4, now: 3, count: 11, edit: "0,1,1", baseValue: 8, line: 4 }, { name: "合计", now: 9, count: 29, edit: "0,1,1", baseValue: 20, line: 5 }];
-	_reactDom2.default.render(_react2.default.createElement(_autoAddTable2.default, { items: items }), document.getElementById('content'));
-
-	/*
-
-	ReactDOM.render(
-	    <FilterableProductTable products={PRODUCTS} />,
+	/*ReactDOM.render(
+	    <ItemTable items={items} />,
 	    document.getElementById('content')
 	);*/
+
+	_reactDom2.default.render(_react2.default.createElement(_table2.default, { products: PRODUCTS }), document.getElementById('content'));
 
 	/*
 	ReactDOM.render(
@@ -21771,11 +21769,11 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _underscore = __webpack_require__(177);
+	var _underscore = __webpack_require__(175);
 
 	var _underscore2 = _interopRequireDefault(_underscore);
 
-	var _jquery = __webpack_require__(178);
+	var _jquery = __webpack_require__(176);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -22023,9 +22021,7 @@
 	exports.default = CountTable;
 
 /***/ },
-/* 175 */,
-/* 176 */,
-/* 177 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -23579,7 +23575,7 @@
 
 
 /***/ },
-/* 178 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!

@@ -66,15 +66,31 @@
 
 	var _autoAddTable2 = _interopRequireDefault(_autoAddTable);
 
+	var _blur = __webpack_require__(177);
+
+	var _blur2 = _interopRequireDefault(_blur);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var PRODUCTS = [{ category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' }, { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' }, { category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball' }, { category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch' }, { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5' }, { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }];
 
 	var items = [{ name: 1, now: 1, count: 5, edit: "0,1,1", baseValue: 4, line: 1 }, { name: 2, now: 2, count: 6, edit: "0,1,1", baseValue: 4, line: 2 }, { name: 3, now: 3, count: 7, edit: "0,1,1", baseValue: 4, line: 3 }, { name: 4, now: 3, count: 11, edit: "0,1,1", baseValue: 8, line: 4 }, { name: "合计", now: 9, count: 29, edit: "0,1,1", baseValue: 20, line: 5 }];
+
 	/*ReactDOM.render(
 	    <ItemTable items={items} />,
 	    document.getElementById('content')
 	);*/
+
+	// 自动计算demo
+	_reactDom2.default.render(_react2.default.createElement(_autoAddTable2.default, { items: items }), document.getElementById('content'));
+	/*
+
+	// react事件学习
+	ReactDOM.render(
+	    <BlurTest />,
+	    document.getElementById('content')
+	);
+	*/
 
 	_reactDom2.default.render(_react2.default.createElement(_table2.default, { products: PRODUCTS }), document.getElementById('content'));
 
@@ -21811,7 +21827,7 @@
 	            return _react2.default.createElement(
 	                'td',
 	                null,
-	                _react2.default.createElement('input', { value: this.props.value, ref: 'inputValue', onChange: this.handleChange })
+	                _react2.default.createElement('input', { defaultValue: this.props.value, ref: 'inputValue', onBlur: this.handleChange })
 	            );
 	        }
 	    }]);
@@ -21883,8 +21899,9 @@
 	        value: function handleUserInput(targetValue, order) {
 	            // 处理不是数字的情况
 	            if (!_jquery2.default.isNumeric(targetValue)) {
-	                targetValue = 0;
+	                // targetValue = 0;
 	            }
+
 	            this.orderDeal(targetValue, order);
 	        }
 	        // 根据input行次进行处理
@@ -21904,6 +21921,7 @@
 	                    this.dealOneOrTwoChange(targetValue, 2);
 	                    break;
 	                default:
+
 	                    this.dealCountCal();
 	                    this.changeState();
 	                    break;
@@ -22009,7 +22027,7 @@
 	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    '\u8BF4\u660E\uFF1A4=1+2\uFF0C\u7D2F\u8BA1\u503C\u81EA\u52A8\u8BA1\u7B97'
+	                    '\u8BF4\u660E\uFF1A4=1+2(\u81EA\u52A8\u8BA1\u7B97)\uFF0C\u7D2F\u8BA1\u503C\u4E5F\u81EA\u52A8\u8BA1\u7B97'
 	                )
 	            );
 	        }
@@ -33799,6 +33817,66 @@
 	return jQuery;
 	} );
 
+
+/***/ },
+/* 177 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by LiuQiang on 2016/11/6.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var BlurTest = function (_React$Component) {
+	    _inherits(BlurTest, _React$Component);
+
+	    function BlurTest(props) {
+	        _classCallCheck(this, BlurTest);
+
+	        var _this = _possibleConstructorReturn(this, (BlurTest.__proto__ || Object.getPrototypeOf(BlurTest)).call(this, props));
+
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(BlurTest, [{
+	        key: "handleChange",
+	        value: function handleChange() {
+	            console.log(this.refs.inputValue.value);
+	        }
+	    }, {
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement("input", { value: this.props.value, ref: "inputValue", onBlur: this.handleChange })
+	            );
+	        }
+	    }]);
+
+	    return BlurTest;
+	}(_react2.default.Component);
+
+	exports.default = BlurTest;
 
 /***/ }
 /******/ ]);

@@ -1,8 +1,8 @@
 import React from 'react'
 import  ReactDOM  from 'react-dom'
-import Greeting from  './hello.js'
-import FilterableProductTable from './table.js'
-import ItemTable from './autoAddTable.js'
+import Greeting from  './components/hello.js'
+import FilterableProductTable from './components/table.js'
+import ItemTable from './components/autoAddTable.js'
 import BlurTest from './events/blur.js'
 
 var PRODUCTS = [
@@ -32,8 +32,8 @@ ReactDOM.render(
     <ItemTable items={items} />,
     document.getElementById('content')
 );
-/*
 
+/*
 // react事件学习
 ReactDOM.render(
     <BlurTest />,
@@ -42,11 +42,11 @@ ReactDOM.render(
 */
 
 
-
+/*
 ReactDOM.render(
     <FilterableProductTable products={PRODUCTS} />,
     document.getElementById('content')
-);
+);*/
 
 /*
 ReactDOM.render(

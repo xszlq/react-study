@@ -9,16 +9,21 @@ class Td extends React.Component{
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.onInputBlur = this.onInputBlur.bind(this);
     }
 
     handleChange() {
         this.props.onUserInput(this.refs.inputValue.value, this.props.order)
     }
 
+    onInputBlur(){
+        this.props.onInputBlur(this.refs.inputValue.value, this.props.order)
+    }
+
     render(){
         return (
             <td>
-                <input defaultValue={this.props.value} ref="inputValue" onBlur={this.handleChange}/>
+                <input value={this.props.value} ref="inputValue" onChange={this.handleChange} onBlur={this.onInputBlur}/>
             </td>
         )
     }
@@ -38,7 +43,7 @@ class Row extends React.Component {
         _.each(item, function(value, key){
             if(parseInt(editables[order++])){
                 var inputOrder = [propsItem.line, 1];
-                tds.push(<Td onUserInput={self.props.onUserInput} value={value} order={inputOrder}/>);
+                tds.push(<Td onUserInput={self.props.onUserInput} onInputBlur={self.props.onInputBlur} value={value} order={inputOrder}/>);
             }else{
                 tds.push(<td>{value}</td>);
             }
@@ -59,17 +64,42 @@ export default class CountTable extends React.Component{
             items: this.props.items
         };
         this.items = this.props.items;
-        this.handleUserInput = this.handleUserInput.bind(this)
+        this.handleUserInput = this.handleUserInput.bind(this);
+        this.handleInputBlur = this.handleInputBlur.bind(this);
     }
 
     handleUserInput(targetValue, order){
         // 处理不是数字的情况
-        if(!$.isNumeric(targetValue)){
-           // targetValue = 0;
+        if(!$.isNumeric(targetValue) && targetValue!==""){
+            // 不是数字 不做处理
+            return;
+        }
+        if(targetValue === "") targetValue = "0.00";
+
+        // 处理input值改变，并控制只能输入两位小数
+       this.inputValueDeal(targetValue, order)
+    }
+
+    // 处理input值改变
+    inputValueDeal(targetValue, order){
+        // 并控制只能输入两位小数
+        var strSlice = targetValue.split(".");
+        if(strSlice.length === 2 && strSlice[1].length>2){
+            return;
         }
 
-       this.orderDeal(targetValue, order)
+        var row = order[0],
+            items = this.props.items,
+            rowOrder = row-1;
+
+        items[rowOrder].now = targetValue;
+        this.changeState();
     }
+
+    handleInputBlur(targetValue, order){
+        this.orderDeal(targetValue, order)
+    }
+
     // 根据input行次进行处理
     orderDeal(targetValue,order){
         var row = order[0];
@@ -95,8 +125,8 @@ export default class CountTable extends React.Component{
         var items = this.props.items,
             rowOrder = row-1;
 
-        items[rowOrder].count = parseFloat(targetValue) + items[0].baseValue;
-        items[rowOrder].now = parseFloat(targetValue);
+        items[rowOrder].count = parseFloat(targetValue).toFixed(2) + items[0].baseValue;
+        items[rowOrder].now = parseFloat(targetValue).toFixed(2);
     }
     // 并自动计算合计值
     dealCountCal(){
@@ -137,7 +167,7 @@ export default class CountTable extends React.Component{
             rows = [];
 
         items.forEach((item)=>{
-            rows.push(<Row item={item} onUserInput={this.handleUserInput}/>)
+            rows.push(<Row item={item} onUserInput={this.handleUserInput} onInputBlur={this.handleInputBlur}/>)
         });
 
         return (

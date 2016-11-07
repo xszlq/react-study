@@ -54,15 +54,15 @@
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _hello = __webpack_require__(172);
+	var _hello = __webpack_require__(178);
 
 	var _hello2 = _interopRequireDefault(_hello);
 
-	var _table = __webpack_require__(173);
+	var _table = __webpack_require__(179);
 
 	var _table2 = _interopRequireDefault(_table);
 
-	var _autoAddTable = __webpack_require__(174);
+	var _autoAddTable = __webpack_require__(180);
 
 	var _autoAddTable2 = _interopRequireDefault(_autoAddTable);
 
@@ -83,8 +83,8 @@
 
 	// 自动计算demo
 	_reactDom2.default.render(_react2.default.createElement(_autoAddTable2.default, { items: items }), document.getElementById('content'));
-	/*
 
+	/*
 	// react事件学习
 	ReactDOM.render(
 	    <BlurTest />,
@@ -92,7 +92,11 @@
 	);
 	*/
 
-	_reactDom2.default.render(_react2.default.createElement(_table2.default, { products: PRODUCTS }), document.getElementById('content'));
+	/*
+	ReactDOM.render(
+	    <FilterableProductTable products={PRODUCTS} />,
+	    document.getElementById('content')
+	);*/
 
 	/*
 	ReactDOM.render(
@@ -21468,577 +21472,9 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 172 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lqg on 2016-11-1.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var Greeting = function (_React$Component) {
-	    _inherits(Greeting, _React$Component);
-
-	    function Greeting() {
-	        _classCallCheck(this, Greeting);
-
-	        return _possibleConstructorReturn(this, (Greeting.__proto__ || Object.getPrototypeOf(Greeting)).apply(this, arguments));
-	    }
-
-	    _createClass(Greeting, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'h1',
-	                null,
-	                'Hello, ',
-	                this.props.name
-	            );
-	        }
-	    }]);
-
-	    return Greeting;
-	}(_react2.default.Component);
-
-	exports.default = Greeting;
-
-/***/ },
-/* 173 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lqg on 2016-11-2.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var ProductCategoryRow = function (_React$Component) {
-	    _inherits(ProductCategoryRow, _React$Component);
-
-	    function ProductCategoryRow() {
-	        _classCallCheck(this, ProductCategoryRow);
-
-	        return _possibleConstructorReturn(this, (ProductCategoryRow.__proto__ || Object.getPrototypeOf(ProductCategoryRow)).apply(this, arguments));
-	    }
-
-	    _createClass(ProductCategoryRow, [{
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'tr',
-	                null,
-	                _react2.default.createElement(
-	                    'th',
-	                    { colSpan: '2' },
-	                    this.props.category
-	                )
-	            );
-	        }
-	    }]);
-
-	    return ProductCategoryRow;
-	}(_react2.default.Component);
-
-	var ProductRow = function (_React$Component2) {
-	    _inherits(ProductRow, _React$Component2);
-
-	    function ProductRow() {
-	        _classCallCheck(this, ProductRow);
-
-	        return _possibleConstructorReturn(this, (ProductRow.__proto__ || Object.getPrototypeOf(ProductRow)).apply(this, arguments));
-	    }
-
-	    _createClass(ProductRow, [{
-	        key: 'render',
-	        value: function render() {
-	            var name = this.props.product.stocked ? this.props.product.name : _react2.default.createElement(
-	                'span',
-	                { style: { color: 'red' } },
-	                this.props.product.name
-	            );
-	            return _react2.default.createElement(
-	                'tr',
-	                null,
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    name
-	                ),
-	                _react2.default.createElement(
-	                    'td',
-	                    null,
-	                    this.props.product.price
-	                )
-	            );
-	        }
-	    }]);
-
-	    return ProductRow;
-	}(_react2.default.Component);
-
-	var ProductTable = function (_React$Component3) {
-	    _inherits(ProductTable, _React$Component3);
-
-	    function ProductTable() {
-	        _classCallCheck(this, ProductTable);
-
-	        return _possibleConstructorReturn(this, (ProductTable.__proto__ || Object.getPrototypeOf(ProductTable)).apply(this, arguments));
-	    }
-
-	    _createClass(ProductTable, [{
-	        key: 'render',
-	        value: function render() {
-	            var _this4 = this;
-
-	            var rows = [];
-	            var lastCategory = null;
-	            this.props.products.forEach(function (product) {
-	                if (product.name.indexOf(_this4.props.filterText) === -1 || !product.stocked && _this4.props.inStockOnly) {
-	                    return;
-	                }
-	                if (product.category !== lastCategory) {
-	                    rows.push(_react2.default.createElement(ProductCategoryRow, { category: product.category, key: product.category }));
-	                }
-	                rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.name }));
-	                lastCategory = product.category;
-	            });
-	            return _react2.default.createElement(
-	                'table',
-	                null,
-	                _react2.default.createElement(
-	                    'thead',
-	                    null,
-	                    _react2.default.createElement(
-	                        'tr',
-	                        null,
-	                        _react2.default.createElement(
-	                            'th',
-	                            null,
-	                            'Name'
-	                        ),
-	                        _react2.default.createElement(
-	                            'th',
-	                            null,
-	                            'Price'
-	                        )
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'tbody',
-	                    null,
-	                    rows
-	                )
-	            );
-	        }
-	    }]);
-
-	    return ProductTable;
-	}(_react2.default.Component);
-
-	var SearchBar = function (_React$Component4) {
-	    _inherits(SearchBar, _React$Component4);
-
-	    function SearchBar(props) {
-	        _classCallCheck(this, SearchBar);
-
-	        var _this5 = _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).call(this, props));
-
-	        _this5.handleChange = _this5.handleChange.bind(_this5);
-	        return _this5;
-	    }
-
-	    _createClass(SearchBar, [{
-	        key: 'handleChange',
-	        value: function handleChange() {
-	            this.props.onUserInput(this.refs.filterTextInput.value, this.refs.inStockOnlyInput.checked);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'form',
-	                null,
-	                _react2.default.createElement('input', {
-	                    type: 'text',
-	                    placeholder: 'Search...',
-	                    value: this.props.filterText,
-	                    ref: 'filterTextInput',
-	                    onChange: this.handleChange
-	                }),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    _react2.default.createElement('input', {
-	                        type: 'checkbox',
-	                        checked: this.props.inStockOnly,
-	                        ref: 'inStockOnlyInput',
-	                        onChange: this.handleChange
-	                    }),
-	                    ' ',
-	                    'Only show products in stock'
-	                )
-	            );
-	        }
-	    }]);
-
-	    return SearchBar;
-	}(_react2.default.Component);
-
-	var FilterableProductTable = function (_React$Component5) {
-	    _inherits(FilterableProductTable, _React$Component5);
-
-	    function FilterableProductTable(props) {
-	        _classCallCheck(this, FilterableProductTable);
-
-	        var _this6 = _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).call(this, props));
-
-	        _this6.state = {
-	            filterText: '',
-	            inStockOnly: false
-	        };
-
-	        _this6.handleUserInput = _this6.handleUserInput.bind(_this6);
-	        return _this6;
-	    }
-
-	    _createClass(FilterableProductTable, [{
-	        key: 'handleUserInput',
-	        value: function handleUserInput(filterText, inStockOnly) {
-	            this.setState({
-	                filterText: filterText,
-	                inStockOnly: inStockOnly
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(SearchBar, {
-	                    filterText: this.state.filterText,
-	                    inStockOnly: this.state.inStockOnly,
-	                    onUserInput: this.handleUserInput
-	                }),
-	                _react2.default.createElement(ProductTable, {
-	                    products: this.props.products,
-	                    filterText: this.state.filterText,
-	                    inStockOnly: this.state.inStockOnly
-	                })
-	            );
-	        }
-	    }]);
-
-	    return FilterableProductTable;
-	}(_react2.default.Component);
-
-	exports.default = FilterableProductTable;
-
-/***/ },
-/* 174 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _underscore = __webpack_require__(175);
-
-	var _underscore2 = _interopRequireDefault(_underscore);
-
-	var _jquery = __webpack_require__(176);
-
-	var _jquery2 = _interopRequireDefault(_jquery);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lqg on 2016-11-2.
-	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
-
-
-	var Td = function (_React$Component) {
-	    _inherits(Td, _React$Component);
-
-	    function Td(props) {
-	        _classCallCheck(this, Td);
-
-	        var _this = _possibleConstructorReturn(this, (Td.__proto__ || Object.getPrototypeOf(Td)).call(this, props));
-
-	        _this.handleChange = _this.handleChange.bind(_this);
-	        return _this;
-	    }
-
-	    _createClass(Td, [{
-	        key: 'handleChange',
-	        value: function handleChange() {
-	            this.props.onUserInput(this.refs.inputValue.value, this.props.order);
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            return _react2.default.createElement(
-	                'td',
-	                null,
-	                _react2.default.createElement('input', { defaultValue: this.props.value, ref: 'inputValue', onBlur: this.handleChange })
-	            );
-	        }
-	    }]);
-
-	    return Td;
-	}(_react2.default.Component);
-
-	var Row = function (_React$Component2) {
-	    _inherits(Row, _React$Component2);
-
-	    function Row() {
-	        _classCallCheck(this, Row);
-
-	        return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
-	    }
-
-	    _createClass(Row, [{
-	        key: 'render',
-	        value: function render() {
-	            var propsItem = this.props.item,
-	                item = _underscore2.default.pick(propsItem, "name", "now", "count"),
-	                tds = [],
-	                editables = propsItem.edit.split(","),
-	                self = this,
-	                order = 0;
-
-	            _underscore2.default.each(item, function (value, key) {
-	                if (parseInt(editables[order++])) {
-	                    var inputOrder = [propsItem.line, 1];
-	                    tds.push(_react2.default.createElement(Td, { onUserInput: self.props.onUserInput, value: value, order: inputOrder }));
-	                } else {
-	                    tds.push(_react2.default.createElement(
-	                        'td',
-	                        null,
-	                        value
-	                    ));
-	                }
-	            });
-
-	            return _react2.default.createElement(
-	                'tr',
-	                null,
-	                tds
-	            );
-	        }
-	    }]);
-
-	    return Row;
-	}(_react2.default.Component);
-
-	var CountTable = function (_React$Component3) {
-	    _inherits(CountTable, _React$Component3);
-
-	    function CountTable(props) {
-	        _classCallCheck(this, CountTable);
-
-	        var _this3 = _possibleConstructorReturn(this, (CountTable.__proto__ || Object.getPrototypeOf(CountTable)).call(this, props));
-
-	        _this3.state = {
-	            items: _this3.props.items
-	        };
-	        _this3.items = _this3.props.items;
-	        _this3.handleUserInput = _this3.handleUserInput.bind(_this3);
-	        return _this3;
-	    }
-
-	    _createClass(CountTable, [{
-	        key: 'handleUserInput',
-	        value: function handleUserInput(targetValue, order) {
-	            // 处理不是数字的情况
-	            if (!_jquery2.default.isNumeric(targetValue)) {
-	                // targetValue = 0;
-	            }
-
-	            this.orderDeal(targetValue, order);
-	        }
-	        // 根据input行次进行处理
-
-	    }, {
-	        key: 'orderDeal',
-	        value: function orderDeal(targetValue, order) {
-	            var row = order[0];
-	            // 处理行间变化
-	            this.dealRowChange(row, targetValue);
-
-	            switch (row) {
-	                case 1:
-	                    this.dealOneOrTwoChange(targetValue, 1);
-	                    break;
-	                case 2:
-	                    this.dealOneOrTwoChange(targetValue, 2);
-	                    break;
-	                default:
-
-	                    this.dealCountCal();
-	                    this.changeState();
-	                    break;
-	            }
-	        }
-	    }, {
-	        key: 'dealRowChange',
-	        value: function dealRowChange(row, targetValue) {
-	            // 设置累计值
-	            var items = this.props.items,
-	                rowOrder = row - 1;
-
-	            items[rowOrder].count = parseFloat(targetValue) + items[0].baseValue;
-	            items[rowOrder].now = parseFloat(targetValue);
-	        }
-	        // 并自动计算合计值
-
-	    }, {
-	        key: 'dealCountCal',
-	        value: function dealCountCal() {
-	            var items = this.props.items,
-	                lastItem = _underscore2.default.last(items);
-	            // 并自动计算合计值
-	            var sum = _underscore2.default.reduce(_underscore2.default.pluck(_underscore2.default.initial(items), "now"), function (memo, num) {
-	                return memo + num;
-	            }, 0);
-
-	            lastItem.now = sum;
-	            lastItem.count = sum + lastItem.baseValue;
-	        }
-
-	        // 第一行改变或第二行改变
-
-	    }, {
-	        key: 'dealOneOrTwoChange',
-	        value: function dealOneOrTwoChange(targetValue, row) {
-	            var items = this.props.items;
-	            // 自动计算 4 = 1+2
-	            if (row === 1) {
-	                items[3].now = items[1].now + parseFloat(targetValue);
-	                items[3].count = items[3].now + items[3].baseValue;
-	            } else {
-	                items[3].now = items[0].now + parseFloat(targetValue);
-	                items[3].count = items[3].now + items[3].baseValue;
-	            }
-	            this.dealCountCal();
-	            this.changeState();
-	        }
-	    }, {
-	        key: 'changeState',
-	        value: function changeState() {
-	            this.setState({
-	                items: this.props.items
-	            });
-	        }
-	    }, {
-	        key: 'render',
-	        value: function render() {
-	            var _this4 = this;
-
-	            var items = this.items,
-	                rows = [];
-
-	            items.forEach(function (item) {
-	                rows.push(_react2.default.createElement(Row, { item: item, onUserInput: _this4.handleUserInput }));
-	            });
-
-	            return _react2.default.createElement(
-	                'div',
-	                null,
-	                _react2.default.createElement(
-	                    'table',
-	                    { className: 'table' },
-	                    _react2.default.createElement(
-	                        'thead',
-	                        null,
-	                        _react2.default.createElement(
-	                            'tr',
-	                            null,
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                'item'
-	                            ),
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                '\u672C\u671F'
-	                            ),
-	                            _react2.default.createElement(
-	                                'th',
-	                                null,
-	                                '\u7D2F\u8BA1'
-	                            )
-	                        )
-	                    ),
-	                    _react2.default.createElement(
-	                        'tbody',
-	                        null,
-	                        rows
-	                    )
-	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    '\u8BF4\u660E\uFF1A4=1+2(\u81EA\u52A8\u8BA1\u7B97)\uFF0C\u7D2F\u8BA1\u503C\u4E5F\u81EA\u52A8\u8BA1\u7B97'
-	                )
-	            );
-	        }
-	    }]);
-
-	    return CountTable;
-	}(_react2.default.Component);
-
-	exports.default = CountTable;
-
-/***/ },
+/* 172 */,
+/* 173 */,
+/* 174 */,
 /* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -33868,7 +33304,7 @@
 	            return _react2.default.createElement(
 	                "div",
 	                null,
-	                _react2.default.createElement("input", { value: this.props.value, ref: "inputValue", onBlur: this.handleChange })
+	                _react2.default.createElement("input", { defaultValue: "23", ref: "inputValue", onBlur: this.handleChange })
 	            );
 	        }
 	    }]);
@@ -33877,6 +33313,612 @@
 	}(_react2.default.Component);
 
 	exports.default = BlurTest;
+
+/***/ },
+/* 178 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lqg on 2016-11-1.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var Greeting = function (_React$Component) {
+	    _inherits(Greeting, _React$Component);
+
+	    function Greeting() {
+	        _classCallCheck(this, Greeting);
+
+	        return _possibleConstructorReturn(this, (Greeting.__proto__ || Object.getPrototypeOf(Greeting)).apply(this, arguments));
+	    }
+
+	    _createClass(Greeting, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'h1',
+	                null,
+	                'Hello, ',
+	                this.props.name
+	            );
+	        }
+	    }]);
+
+	    return Greeting;
+	}(_react2.default.Component);
+
+	exports.default = Greeting;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lqg on 2016-11-2.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var ProductCategoryRow = function (_React$Component) {
+	    _inherits(ProductCategoryRow, _React$Component);
+
+	    function ProductCategoryRow() {
+	        _classCallCheck(this, ProductCategoryRow);
+
+	        return _possibleConstructorReturn(this, (ProductCategoryRow.__proto__ || Object.getPrototypeOf(ProductCategoryRow)).apply(this, arguments));
+	    }
+
+	    _createClass(ProductCategoryRow, [{
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'tr',
+	                null,
+	                _react2.default.createElement(
+	                    'th',
+	                    { colSpan: '2' },
+	                    this.props.category
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ProductCategoryRow;
+	}(_react2.default.Component);
+
+	var ProductRow = function (_React$Component2) {
+	    _inherits(ProductRow, _React$Component2);
+
+	    function ProductRow() {
+	        _classCallCheck(this, ProductRow);
+
+	        return _possibleConstructorReturn(this, (ProductRow.__proto__ || Object.getPrototypeOf(ProductRow)).apply(this, arguments));
+	    }
+
+	    _createClass(ProductRow, [{
+	        key: 'render',
+	        value: function render() {
+	            var name = this.props.product.stocked ? this.props.product.name : _react2.default.createElement(
+	                'span',
+	                { style: { color: 'red' } },
+	                this.props.product.name
+	            );
+	            return _react2.default.createElement(
+	                'tr',
+	                null,
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    name
+	                ),
+	                _react2.default.createElement(
+	                    'td',
+	                    null,
+	                    this.props.product.price
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ProductRow;
+	}(_react2.default.Component);
+
+	var ProductTable = function (_React$Component3) {
+	    _inherits(ProductTable, _React$Component3);
+
+	    function ProductTable() {
+	        _classCallCheck(this, ProductTable);
+
+	        return _possibleConstructorReturn(this, (ProductTable.__proto__ || Object.getPrototypeOf(ProductTable)).apply(this, arguments));
+	    }
+
+	    _createClass(ProductTable, [{
+	        key: 'render',
+	        value: function render() {
+	            var _this4 = this;
+
+	            var rows = [];
+	            var lastCategory = null;
+	            this.props.products.forEach(function (product) {
+	                if (product.name.indexOf(_this4.props.filterText) === -1 || !product.stocked && _this4.props.inStockOnly) {
+	                    return;
+	                }
+	                if (product.category !== lastCategory) {
+	                    rows.push(_react2.default.createElement(ProductCategoryRow, { category: product.category, key: product.category }));
+	                }
+	                rows.push(_react2.default.createElement(ProductRow, { product: product, key: product.name }));
+	                lastCategory = product.category;
+	            });
+	            return _react2.default.createElement(
+	                'table',
+	                null,
+	                _react2.default.createElement(
+	                    'thead',
+	                    null,
+	                    _react2.default.createElement(
+	                        'tr',
+	                        null,
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            'Name'
+	                        ),
+	                        _react2.default.createElement(
+	                            'th',
+	                            null,
+	                            'Price'
+	                        )
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'tbody',
+	                    null,
+	                    rows
+	                )
+	            );
+	        }
+	    }]);
+
+	    return ProductTable;
+	}(_react2.default.Component);
+
+	var SearchBar = function (_React$Component4) {
+	    _inherits(SearchBar, _React$Component4);
+
+	    function SearchBar(props) {
+	        _classCallCheck(this, SearchBar);
+
+	        var _this5 = _possibleConstructorReturn(this, (SearchBar.__proto__ || Object.getPrototypeOf(SearchBar)).call(this, props));
+
+	        _this5.handleChange = _this5.handleChange.bind(_this5);
+	        return _this5;
+	    }
+
+	    _createClass(SearchBar, [{
+	        key: 'handleChange',
+	        value: function handleChange() {
+	            this.props.onUserInput(this.refs.filterTextInput.value, this.refs.inStockOnlyInput.checked);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'form',
+	                null,
+	                _react2.default.createElement('input', {
+	                    type: 'text',
+	                    placeholder: 'Search...',
+	                    value: this.props.filterText,
+	                    ref: 'filterTextInput',
+	                    onChange: this.handleChange
+	                }),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    _react2.default.createElement('input', {
+	                        type: 'checkbox',
+	                        checked: this.props.inStockOnly,
+	                        ref: 'inStockOnlyInput',
+	                        onChange: this.handleChange
+	                    }),
+	                    ' ',
+	                    'Only show products in stock'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return SearchBar;
+	}(_react2.default.Component);
+
+	var FilterableProductTable = function (_React$Component5) {
+	    _inherits(FilterableProductTable, _React$Component5);
+
+	    function FilterableProductTable(props) {
+	        _classCallCheck(this, FilterableProductTable);
+
+	        var _this6 = _possibleConstructorReturn(this, (FilterableProductTable.__proto__ || Object.getPrototypeOf(FilterableProductTable)).call(this, props));
+
+	        _this6.state = {
+	            filterText: '',
+	            inStockOnly: false
+	        };
+
+	        _this6.handleUserInput = _this6.handleUserInput.bind(_this6);
+	        return _this6;
+	    }
+
+	    _createClass(FilterableProductTable, [{
+	        key: 'handleUserInput',
+	        value: function handleUserInput(filterText, inStockOnly) {
+	            this.setState({
+	                filterText: filterText,
+	                inStockOnly: inStockOnly
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(SearchBar, {
+	                    filterText: this.state.filterText,
+	                    inStockOnly: this.state.inStockOnly,
+	                    onUserInput: this.handleUserInput
+	                }),
+	                _react2.default.createElement(ProductTable, {
+	                    products: this.props.products,
+	                    filterText: this.state.filterText,
+	                    inStockOnly: this.state.inStockOnly
+	                })
+	            );
+	        }
+	    }]);
+
+	    return FilterableProductTable;
+	}(_react2.default.Component);
+
+	exports.default = FilterableProductTable;
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _underscore = __webpack_require__(175);
+
+	var _underscore2 = _interopRequireDefault(_underscore);
+
+	var _jquery = __webpack_require__(176);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /**
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * Created by lqg on 2016-11-2.
+	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+
+
+	var Td = function (_React$Component) {
+	    _inherits(Td, _React$Component);
+
+	    function Td(props) {
+	        _classCallCheck(this, Td);
+
+	        var _this = _possibleConstructorReturn(this, (Td.__proto__ || Object.getPrototypeOf(Td)).call(this, props));
+
+	        _this.handleChange = _this.handleChange.bind(_this);
+	        _this.onInputBlur = _this.onInputBlur.bind(_this);
+	        return _this;
+	    }
+
+	    _createClass(Td, [{
+	        key: 'handleChange',
+	        value: function handleChange() {
+	            this.props.onUserInput(this.refs.inputValue.value, this.props.order);
+	        }
+	    }, {
+	        key: 'onInputBlur',
+	        value: function onInputBlur() {
+	            this.props.onInputBlur(this.refs.inputValue.value, this.props.order);
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            return _react2.default.createElement(
+	                'td',
+	                null,
+	                _react2.default.createElement('input', { value: this.props.value, ref: 'inputValue', onChange: this.handleChange, onBlur: this.onInputBlur })
+	            );
+	        }
+	    }]);
+
+	    return Td;
+	}(_react2.default.Component);
+
+	var Row = function (_React$Component2) {
+	    _inherits(Row, _React$Component2);
+
+	    function Row() {
+	        _classCallCheck(this, Row);
+
+	        return _possibleConstructorReturn(this, (Row.__proto__ || Object.getPrototypeOf(Row)).apply(this, arguments));
+	    }
+
+	    _createClass(Row, [{
+	        key: 'render',
+	        value: function render() {
+	            var propsItem = this.props.item,
+	                item = _underscore2.default.pick(propsItem, "name", "now", "count"),
+	                tds = [],
+	                editables = propsItem.edit.split(","),
+	                self = this,
+	                order = 0;
+
+	            _underscore2.default.each(item, function (value, key) {
+	                if (parseInt(editables[order++])) {
+	                    var inputOrder = [propsItem.line, 1];
+	                    tds.push(_react2.default.createElement(Td, { onUserInput: self.props.onUserInput, onInputBlur: self.props.onInputBlur, value: value, order: inputOrder }));
+	                } else {
+	                    tds.push(_react2.default.createElement(
+	                        'td',
+	                        null,
+	                        value
+	                    ));
+	                }
+	            });
+
+	            return _react2.default.createElement(
+	                'tr',
+	                null,
+	                tds
+	            );
+	        }
+	    }]);
+
+	    return Row;
+	}(_react2.default.Component);
+
+	var CountTable = function (_React$Component3) {
+	    _inherits(CountTable, _React$Component3);
+
+	    function CountTable(props) {
+	        _classCallCheck(this, CountTable);
+
+	        var _this3 = _possibleConstructorReturn(this, (CountTable.__proto__ || Object.getPrototypeOf(CountTable)).call(this, props));
+
+	        _this3.state = {
+	            items: _this3.props.items
+	        };
+	        _this3.items = _this3.props.items;
+	        _this3.handleUserInput = _this3.handleUserInput.bind(_this3);
+	        _this3.handleInputBlur = _this3.handleInputBlur.bind(_this3);
+	        return _this3;
+	    }
+
+	    _createClass(CountTable, [{
+	        key: 'handleUserInput',
+	        value: function handleUserInput(targetValue, order) {
+	            // 处理不是数字的情况
+	            if (!_jquery2.default.isNumeric(targetValue) && targetValue !== "") {
+	                // 不是数字 不做处理
+	                return;
+	            }
+	            if (targetValue === "") targetValue = "0.00";
+
+	            // 处理input值改变，并控制只能输入两位小数
+	            this.inputValueDeal(targetValue, order);
+	        }
+
+	        // 处理input值改变
+
+	    }, {
+	        key: 'inputValueDeal',
+	        value: function inputValueDeal(targetValue, order) {
+	            // 并控制只能输入两位小数
+	            var strSlice = targetValue.split(".");
+	            if (strSlice.length === 2 && strSlice[1].length > 2) {
+	                return;
+	            }
+
+	            var row = order[0],
+	                items = this.props.items,
+	                rowOrder = row - 1;
+
+	            items[rowOrder].now = targetValue;
+	            this.changeState();
+	        }
+	    }, {
+	        key: 'handleInputBlur',
+	        value: function handleInputBlur(targetValue, order) {
+	            this.orderDeal(targetValue, order);
+	        }
+
+	        // 根据input行次进行处理
+
+	    }, {
+	        key: 'orderDeal',
+	        value: function orderDeal(targetValue, order) {
+	            var row = order[0];
+	            // 处理行间变化
+	            this.dealRowChange(row, targetValue);
+
+	            switch (row) {
+	                case 1:
+	                    this.dealOneOrTwoChange(targetValue, 1);
+	                    break;
+	                case 2:
+	                    this.dealOneOrTwoChange(targetValue, 2);
+	                    break;
+	                default:
+
+	                    this.dealCountCal();
+	                    this.changeState();
+	                    break;
+	            }
+	        }
+	    }, {
+	        key: 'dealRowChange',
+	        value: function dealRowChange(row, targetValue) {
+	            // 设置累计值
+	            var items = this.props.items,
+	                rowOrder = row - 1;
+
+	            items[rowOrder].count = parseFloat(targetValue).toFixed(2) + items[0].baseValue;
+	            items[rowOrder].now = parseFloat(targetValue).toFixed(2);
+	        }
+	        // 并自动计算合计值
+
+	    }, {
+	        key: 'dealCountCal',
+	        value: function dealCountCal() {
+	            var items = this.props.items,
+	                lastItem = _underscore2.default.last(items);
+	            // 并自动计算合计值
+	            var sum = _underscore2.default.reduce(_underscore2.default.pluck(_underscore2.default.initial(items), "now"), function (memo, num) {
+	                return memo + num;
+	            }, 0);
+
+	            lastItem.now = sum;
+	            lastItem.count = sum + lastItem.baseValue;
+	        }
+
+	        // 第一行改变或第二行改变
+
+	    }, {
+	        key: 'dealOneOrTwoChange',
+	        value: function dealOneOrTwoChange(targetValue, row) {
+	            var items = this.props.items;
+	            // 自动计算 4 = 1+2
+	            if (row === 1) {
+	                items[3].now = items[1].now + parseFloat(targetValue);
+	                items[3].count = items[3].now + items[3].baseValue;
+	            } else {
+	                items[3].now = items[0].now + parseFloat(targetValue);
+	                items[3].count = items[3].now + items[3].baseValue;
+	            }
+	            this.dealCountCal();
+	            this.changeState();
+	        }
+	    }, {
+	        key: 'changeState',
+	        value: function changeState() {
+	            this.setState({
+	                items: this.props.items
+	            });
+	        }
+	    }, {
+	        key: 'render',
+	        value: function render() {
+	            var _this4 = this;
+
+	            var items = this.items,
+	                rows = [];
+
+	            items.forEach(function (item) {
+	                rows.push(_react2.default.createElement(Row, { item: item, onUserInput: _this4.handleUserInput, onInputBlur: _this4.handleInputBlur }));
+	            });
+
+	            return _react2.default.createElement(
+	                'div',
+	                null,
+	                _react2.default.createElement(
+	                    'table',
+	                    { className: 'table' },
+	                    _react2.default.createElement(
+	                        'thead',
+	                        null,
+	                        _react2.default.createElement(
+	                            'tr',
+	                            null,
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                'item'
+	                            ),
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                '\u672C\u671F'
+	                            ),
+	                            _react2.default.createElement(
+	                                'th',
+	                                null,
+	                                '\u7D2F\u8BA1'
+	                            )
+	                        )
+	                    ),
+	                    _react2.default.createElement(
+	                        'tbody',
+	                        null,
+	                        rows
+	                    )
+	                ),
+	                _react2.default.createElement(
+	                    'p',
+	                    null,
+	                    '\u8BF4\u660E\uFF1A4=1+2(\u81EA\u52A8\u8BA1\u7B97)\uFF0C\u7D2F\u8BA1\u503C\u4E5F\u81EA\u52A8\u8BA1\u7B97'
+	                )
+	            );
+	        }
+	    }]);
+
+	    return CountTable;
+	}(_react2.default.Component);
+
+	exports.default = CountTable;
 
 /***/ }
 /******/ ]);

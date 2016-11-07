@@ -17,7 +17,7 @@ export default class BlurTest extends React.Component{
     render(){
         return (
             <div>
-                <input value={this.props.value} ref="inputValue" onBlur={this.handleChange}/>
+                <input defaultValue="23" ref="inputValue" onBlur={this.handleChange}/>
             </div>
         )
     }

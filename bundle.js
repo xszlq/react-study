@@ -33640,6 +33640,8 @@
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
+	var _numberUtil = __webpack_require__(181);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33710,11 +33712,11 @@
 	            _underscore2.default.each(item, function (value, key) {
 	                if (parseInt(editables[order++])) {
 	                    var inputOrder = [propsItem.line, 1];
-	                    tds.push(_react2.default.createElement(Td, { onUserInput: self.props.onUserInput, onInputBlur: self.props.onInputBlur, value: value, order: inputOrder }));
+	                    tds.push(_react2.default.createElement(Td, { key: key, onUserInput: self.props.onUserInput, onInputBlur: self.props.onInputBlur, value: value, order: inputOrder }));
 	                } else {
 	                    tds.push(_react2.default.createElement(
 	                        'td',
-	                        null,
+	                        { key: key },
 	                        value
 	                    ));
 	                }
@@ -33816,7 +33818,7 @@
 	            var items = this.props.items,
 	                rowOrder = row - 1;
 
-	            items[rowOrder].count = parseFloat(targetValue).toFixed(2) + items[0].baseValue;
+	            items[rowOrder].count = (parseFloat(targetValue) + parseFloat(items[0].baseValue)).toFixed(2);
 	            items[rowOrder].now = parseFloat(targetValue).toFixed(2);
 	        }
 	        // 并自动计算合计值
@@ -33828,11 +33830,11 @@
 	                lastItem = _underscore2.default.last(items);
 	            // 并自动计算合计值
 	            var sum = _underscore2.default.reduce(_underscore2.default.pluck(_underscore2.default.initial(items), "now"), function (memo, num) {
-	                return memo + num;
+	                return memo + parseFloat(num);
 	            }, 0);
 
-	            lastItem.now = sum;
-	            lastItem.count = sum + lastItem.baseValue;
+	            lastItem.now = sum.toFixed(2);
+	            lastItem.count = (sum + lastItem.baseValue).toFixed(2);
 	        }
 
 	        // 第一行改变或第二行改变
@@ -33867,8 +33869,8 @@
 	            var items = this.items,
 	                rows = [];
 
-	            items.forEach(function (item) {
-	                rows.push(_react2.default.createElement(Row, { item: item, onUserInput: _this4.handleUserInput, onInputBlur: _this4.handleInputBlur }));
+	            items.forEach(function (item, index) {
+	                rows.push(_react2.default.createElement(Row, { key: index, item: item, onUserInput: _this4.handleUserInput, onInputBlur: _this4.handleInputBlur }));
 	            });
 
 	            return _react2.default.createElement(
@@ -33919,6 +33921,35 @@
 	}(_react2.default.Component);
 
 	exports.default = CountTable;
+
+/***/ },
+/* 181 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	/**
+	 * Created by lqg on 2016-11-7.
+	 */
+	var numberUtil = function () {
+	    /**
+	     * 保留两位小数
+	     * @param value
+	     * @returns {string}
+	     */
+	    var toFixedTwoDecimal = function toFixedTwoDecimal(value) {
+	        return parseFloat(value).toFixed(2);
+	    };
+
+	    return {
+	        toFixedTwoDecimal: toFixedTwoDecimal
+	    };
+	}();
+
+	exports.numberUtil = numberUtil;
 
 /***/ }
 /******/ ]);

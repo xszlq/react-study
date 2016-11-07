@@ -4,6 +4,7 @@
 import React from 'react'
 import _ from 'underscore'
 import $ from 'jquery'
+import {numberUtil} from '../utils/numberUtil'
 
 class Td extends React.Component{
     constructor(props) {
@@ -43,9 +44,9 @@ class Row extends React.Component {
         _.each(item, function(value, key){
             if(parseInt(editables[order++])){
                 var inputOrder = [propsItem.line, 1];
-                tds.push(<Td onUserInput={self.props.onUserInput} onInputBlur={self.props.onInputBlur} value={value} order={inputOrder}/>);
+                tds.push(<Td key={key} onUserInput={self.props.onUserInput} onInputBlur={self.props.onInputBlur} value={value} order={inputOrder}/>);
             }else{
-                tds.push(<td>{value}</td>);
+                tds.push(<td key={key}>{value}</td>);
             }
         });
 
@@ -125,7 +126,7 @@ export default class CountTable extends React.Component{
         var items = this.props.items,
             rowOrder = row-1;
 
-        items[rowOrder].count = parseFloat(targetValue).toFixed(2) + items[0].baseValue;
+        items[rowOrder].count = (parseFloat(targetValue) + parseFloat(items[0].baseValue)).toFixed(2);
         items[rowOrder].now = parseFloat(targetValue).toFixed(2);
     }
     // 并自动计算合计值
@@ -133,12 +134,10 @@ export default class CountTable extends React.Component{
         var items = this.props.items,
             lastItem = _.last(items);
         // 并自动计算合计值
-        var sum = _.reduce(_.pluck(_.initial(items), "now"), function (memo,num) {
-            return memo+num;
-        }, 0);
+        var sum = _.reduce(_.pluck(_.initial(items), "now"), (memo,num)=> memo + parseFloat(num), 0);
 
-        lastItem.now = sum;
-        lastItem.count = sum + lastItem.baseValue;
+        lastItem.now = sum.toFixed(2);
+        lastItem.count = (sum + lastItem.baseValue).toFixed(2);
     }
 
     // 第一行改变或第二行改变
@@ -166,8 +165,8 @@ export default class CountTable extends React.Component{
         var items = this.items,
             rows = [];
 
-        items.forEach((item)=>{
-            rows.push(<Row item={item} onUserInput={this.handleUserInput} onInputBlur={this.handleInputBlur}/>)
+        items.forEach((item, index)=>{
+            rows.push(<Row key={index} item={item} onUserInput={this.handleUserInput} onInputBlur={this.handleInputBlur}/>)
         });
 
         return (

@@ -10,14 +10,18 @@ export default class BlurTest extends React.Component{
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(){
-        console.log(this.refs.inputValue.value);
+    handleChange(e){
+        this.refs.inputValue.focus();
+    }
+
+    handleClick(){
+        console.log("click");
     }
 
     render(){
         return (
             <div>
-                <input defaultValue="23" ref="inputValue" onBlur={this.handleChange}/>
+                <input defaultValue="23" ref="inputValue" onClick={this.handleClick.bind(this)} onBlur={this.handleChange}/>
             </div>
         )
     }

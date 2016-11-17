@@ -26,20 +26,18 @@ var items = [
     <ItemTable items={items} />,
     document.getElementById('content')
 );*/
-
+/*
 // 自动计算demo
 ReactDOM.render(
     <ItemTable items={items} />,
     document.getElementById('content')
-);
+);*/
 
-/*
 // react事件学习
 ReactDOM.render(
     <BlurTest />,
     document.getElementById('content')
 );
-*/
 
 
 /*

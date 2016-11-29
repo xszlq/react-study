@@ -33938,10 +33938,34 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
+	            function NumberList(props) {
+	                var numbers = props.numbers;
+	                var listItems = numbers.map(function (number) {
+	                    return _react2.default.createElement(
+	                        "li",
+	                        null,
+	                        number
+	                    );
+	                });
+	                return _react2.default.createElement(
+	                    "ul",
+	                    null,
+	                    listItems
+	                );
+	            }
+	            var numbers = [1, 2, 3, 4, 5];
+	            var inputValue = 23;
+	
+	            function inputTest(props) {
+	                return _react2.default.createElement("input", { value: props.value });
+	            }
+	
 	            return _react2.default.createElement(
 	                "div",
 	                null,
-	                _react2.default.createElement("input", { defaultValue: "23", ref: "inputValue", onClick: this.handleClick.bind(this), onBlur: this.handleChange })
+	                _react2.default.createElement("input", { defaultValue: "23", ref: "inputValue", onClick: this.handleClick.bind(this), onBlur: this.handleChange }),
+	                _react2.default.createElement(NumberList, { numbers: numbers }),
+	                _react2.default.createElement("inputTest", { value: inputValue })
 	            );
 	        }
 	    }]);

@@ -19,9 +19,29 @@ export default class BlurTest extends React.Component{
     }
 
     render(){
+        function NumberList(props) {
+            const numbers = props.numbers;
+            const listItems = numbers.map((number) =>
+                <li>{number}</li>
+            );
+            return (
+                <ul>{listItems}</ul>
+            );
+        }
+        const numbers = [1, 2, 3, 4, 5];
+        const inputValue = 23;
+
+        function inputTest(props){
+            return (
+                <input  value={props.value}/>
+            )
+        }
+
         return (
             <div>
                 <input defaultValue="23" ref="inputValue" onClick={this.handleClick.bind(this)} onBlur={this.handleChange}/>
+                <NumberList numbers={numbers}/>
+                <inputTest value={inputValue}/>
             </div>
         )
     }

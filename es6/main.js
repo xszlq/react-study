@@ -4,6 +4,9 @@ import Greeting from  './components/hello.js'
 import FilterableProductTable from './components/table.js'
 import ItemTable from './components/autoAddTable.js'
 import BlurTest from './events/blur.js'
+import _ from 'underscore'
+import $ from 'jquery'
+
 
 var PRODUCTS = [
     {category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football'},
@@ -34,10 +37,10 @@ ReactDOM.render(
 );*/
 
 // react事件学习
-ReactDOM.render(
+/*ReactDOM.render(
     <BlurTest />,
     document.getElementById('content')
-);
+);*/
 
 
 /*
@@ -51,4 +54,9 @@ ReactDOM.render(
     <Greeting name="lq"/>,
     document.getElementById('content')
 )*/
+
+// function js
+var url = function (term) {
+    return 'https://api.flickr.com/services/feeds/photos_public.gne?tags=' + term + '&format=json&jsoncallback=?';
+};
 

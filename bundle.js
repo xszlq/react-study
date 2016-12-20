@@ -33965,7 +33965,7 @@
 	                null,
 	                _react2.default.createElement("input", { defaultValue: "23", ref: "inputValue", onClick: this.handleClick.bind(this), onBlur: this.handleChange }),
 	                _react2.default.createElement(NumberList, { numbers: numbers }),
-	                _react2.default.createElement("inputTest", { value: inputValue })
+	                _react2.default.createElement("input", { value: inputValue, onMouseMove: this.monseMoveAddTitle })
 	            );
 	        }
 	    }]);

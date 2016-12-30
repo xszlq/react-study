@@ -70,6 +70,14 @@
 	
 	var _blur2 = _interopRequireDefault(_blur);
 	
+	var _underscore = __webpack_require__(175);
+	
+	var _underscore2 = _interopRequireDefault(_underscore);
+	
+	var _jquery = __webpack_require__(176);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var PRODUCTS = [{ category: 'Sporting Goods', price: '$49.99', stocked: true, name: 'Football' }, { category: 'Sporting Goods', price: '$9.99', stocked: true, name: 'Baseball' }, { category: 'Sporting Goods', price: '$29.99', stocked: false, name: 'Basketball' }, { category: 'Electronics', price: '$99.99', stocked: true, name: 'iPod Touch' }, { category: 'Electronics', price: '$399.99', stocked: false, name: 'iPhone 5' }, { category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7' }];
@@ -88,7 +96,10 @@
 	);*/
 	
 	// react事件学习
-	_reactDom2.default.render(_react2.default.createElement(_blur2.default, null), document.getElementById('content'));
+	/*ReactDOM.render(
+	    <BlurTest />,
+	    document.getElementById('content')
+	);*/
 	
 	/*
 	ReactDOM.render(
@@ -101,6 +112,11 @@
 	    <Greeting name="lq"/>,
 	    document.getElementById('content')
 	)*/
+	
+	// function js
+	var url = function url(term) {
+	    return 'https://api.flickr.com/services/feeds/photos_public.gne?tags=' + term + '&format=json&jsoncallback=?';
+	};
 
 /***/ },
 /* 1 */
@@ -33965,7 +33981,7 @@
 	                null,
 	                _react2.default.createElement("input", { defaultValue: "23", ref: "inputValue", onClick: this.handleClick.bind(this), onBlur: this.handleChange }),
 	                _react2.default.createElement(NumberList, { numbers: numbers }),
-	                _react2.default.createElement("input", { value: inputValue, onMouseMove: this.monseMoveAddTitle })
+	                _react2.default.createElement("inputTest", { value: inputValue })
 	            );
 	        }
 	    }]);

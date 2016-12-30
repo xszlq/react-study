@@ -1,7 +1,7 @@
 /**
  * Created by lqg on 2016-12-22.
  */
-import _ from 'underscore'
+import _ from 'lodash'
 import $ from 'jquery'
 
 /**
@@ -16,7 +16,7 @@ import $ from 'jquery'
 
 /**
  * 说明：按照自己的思路我会按照下面的方式封装。
- * 计算collection指定顺序某个字段的合
+ * 计算collection指定顺序某个字段的合并保留两位小数
  * @param countArray
  * @param collection
  * @returns {Function}
@@ -26,3 +26,11 @@ var getCount = function(countArray, collection){
         return (countArray.reduce((memo, num)=>memo + parseFloat(collection[num][code]), 0)).toFixed(2);
     }
 };
+
+var add = function(a, b){
+    return a + b;
+};
+
+var add3 = _.curry(add)(3);
+
+console.log(add3, 5);

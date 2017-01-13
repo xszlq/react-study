@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../node_modules/lodash/lodash.js"></script>
+</head>
+<body>
+<div style="width: 100px;height: 100px;display: inline;background-color: lightblue;"></div>
+<div style="width: 100px;height: 100px;background-color: lightcoral;"></div>
+<script>
+    var array1 = [1,1,2,3,4,3];
+
+    function uniqueArray(array1){
+        var obj = {}, returnArray = [];
+        array1.forEach(function(num, index){
+           obj[num] = index;
+        });
+        for(var i in obj){
+            returnArray.push(i);
+        }
+        return returnArray;
+    }
+
+    uniqueArray(array1);
+
+    var str1 = "  fdsa  ";
+
+    function strTrim(str){
+        var rStr = "";
+
+        var length = str.length;
+
+        for(var i=0; i<length; i++){
+            if(str.charAt(i)!==" "){
+                rStr += str.charAt(i);
+            }
+        }
+
+        console.log(rStr.length);
+        return rStr;
+    }
+
+    strTrim(str1);
+
+
+</script>
+</body>
+</html>

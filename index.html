@@ -11,7 +11,72 @@
     </style>
 </head>
 <body>
-<div id="content"></div>
+<!--<div style="width: 400px; height: 300px; background-color: lightblue; position: relative; box-sizing: border-box; padding: 100px 0 0 0;">
+    <div style="width: 100%; height: 100px; margin-top: -100px;"></div>
+    <div style="background-color: lightpink; height: 100%; width:100%; top: 100px;"></div>
+</div>-->
+<!--<div style="width: 400px; height: 300px; background-color: lightblue; position: relative;" id="testId">
+    <div style="width: 100%; height: 100px;"></div>
+    <div style="background-color: lightpink; position: absolute; top: 100px;"></div>
+</div>-->
+
+<div style="width: 400px; height: 300px; background-color: lightblue;">
+
+</div>
+
+<script src="node_modules/jquery/dist/jquery.js"></script>
+<script>
+    var arr1 = [1,2,3,4,5,6,7,8,9,10];
+
+    function randomArray(arr){
+        var tempArr = arr.map(function(i){
+            return i;
+        });
+        var returnArray = [];
+
+        while(tempArr.length > 0){
+            var index = parseInt(Math.random()*tempArr.length);
+            returnArray.push(tempArr[index]);
+            tempArr.splice(index, 1);
+        }
+        return returnArray;
+    }
+
+    var eventModel = (function(){
+        var eventList = [];
+        var bind = function(name, fun){
+            var tempObj = {};
+            tempObj[name] = fun;
+
+            eventList.push(tempObj);
+        };
+        var trigger = function(name){
+            var registerEvents = [];
+
+            eventList.forEach(function(obj){
+                if(obj.hasOwnProperty(name)){
+                    registerEvents.push(obj[name]);
+                }
+            });
+            if(registerEvents.length>0){
+                registerEvents.forEach(function(fun){
+                    fun();
+                })
+            }else{
+                throw  name + "事件未注册";
+            }
+        };
+
+        return {
+            bind: bind,
+            trigger: trigger
+        }
+    })()
+
+
+</script>
+
+<!--<div id="content"></div>-->
 
 <script src="bundle.js"></script>
 </body>
